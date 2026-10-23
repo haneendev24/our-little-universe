@@ -1,0 +1,562 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%}
+body{background:#030711;color:#fff;font-family:"Inter",sans-serif;overflow:hidden}
+button,a{font:inherit}
+
+.universe,.page{background:
+radial-gradient(ellipse at 50% 40%,rgba(63,52,112,.30),transparent 66%),
+radial-gradient(ellipse at 18% 82%,rgba(52,35,87,.16),transparent 55%),
+linear-gradient(180deg,#020611,#080d22 55%,#030711)}
+.universe{position:relative;width:100%;height:100vh;overflow:hidden}
+.universe:before,.page:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 35%,rgba(150,130,220,.07),transparent 55%)}
+
+#stars{position:absolute;inset:0}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.45;box-shadow:0 0 5px #fff,0 0 12px rgba(170,180,255,.3);animation:twinkle var(--d) ease-in-out infinite}
+.star.bright{width:3px;height:3px}
+@keyframes twinkle{0%,100%{opacity:.18;transform:scale(.8)}50%{opacity:.85;transform:scale(1.2)}}
+
+.hero{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-bottom:28px}
+.eyebrow{font-size:8px;letter-spacing:4px;color:rgba(255,255,255,.38);text-transform:uppercase}
+.hero .eyebrow{margin-bottom:20px}
+h1{font-family:"Cormorant Garamond",serif;font-size:clamp(40px,6vw,76px);font-weight:500;letter-spacing:6px;color:#f7f4ff}
+.date{display:flex;gap:14px;align-items:center;margin-top:24px;font:400 18px "Cormorant Garamond";letter-spacing:3px;color:rgba(255,255,255,.68)}
+.date i{font-style:normal;color:rgba(205,190,255,.6)}
+.subtitle{margin-top:21px;font:italic 20px "Cormorant Garamond";color:rgba(255,255,255,.43)}
+
+.interactive-star{position:absolute;z-index:5;width:34px;height:34px;border:0;background:transparent;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.interactive-star>span{font-size:22px;text-shadow:0 0 7px #fff,0 0 18px rgba(190,180,255,.7);transition:.3s}
+.interactive-star:hover>span{transform:scale(1.35);filter:drop-shadow(0 0 8px #fff)}
+.interactive-star small{position:absolute;top:-17px;left:50%;transform:translate(-50%,5px);white-space:nowrap;font-size:6px;letter-spacing:1.7px;color:rgba(255,255,255,.48);opacity:0;transition:.25s;pointer-events:none}
+.interactive-star:hover small{opacity:1;transform:translate(-50%,0)}
+.interactive-star b{position:absolute;right:1px;bottom:1px;font-size:7px;color:#777;font-weight:400}
+.star-memory{top:23%;left:16%}.star-voice{top:27%;right:18%}.star-letters{top:63%;left:23%}.star-game{bottom:25%;left:50%;transform:translateX(-50%)}.star-gift{top:58%;right:22%}.star-openwhen{top:42%;left:8%}.star-secret{bottom:19%;right:12%}.star-future{top:18%;right:40%;opacity:.55}
+
+.scroll-hint{position:absolute;z-index:3;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:9px;color:rgba(255,255,255,.25);font-size:7px;letter-spacing:3px;text-transform:uppercase}
+.scroll-hint div{width:42px;height:1px;background:rgba(255,255,255,.14);position:relative}.scroll-hint div:after{content:"";position:absolute;left:0;width:13px;height:1px;background:rgba(255,255,255,.6);animation:line 2s infinite}
+@keyframes line{0%{left:0;opacity:0}30%,70%{opacity:1}100%{left:29px;opacity:0}}
+
+.page{position:fixed;inset:0;z-index:50;overflow-y:auto;opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.02);transition:.45s}
+.page.active{opacity:1;visibility:visible;pointer-events:auto;transform:scale(1)}
+.page-inner{width:min(900px,88%);margin:auto;padding:70px 0 65px;text-align:center;position:relative;z-index:1}
+.page-inner h2{margin-top:18px;font:400 clamp(44px,6vw,66px)/.9 "Cormorant Garamond";letter-spacing:1px}
+.page-inner h2 em{font-style:italic;color:rgba(210,200,240,.65)}
+.intro{max-width:410px;margin:22px auto 40px;font:400 17px/1.5 "Cormorant Garamond";color:rgba(255,255,255,.4)}
+.centered{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:30px}
+.close,.modal-close{position:fixed;right:25px;top:22px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.025);color:rgba(255,255,255,.65);font-size:24px;cursor:pointer;z-index:10;transition:.25s}
+.close:hover,.modal-close:hover{color:#fff;transform:rotate(90deg);background:rgba(255,255,255,.07)}
+
+.timeline{max-width:680px;margin:0 auto;text-align:left}.timeline article{display:grid;grid-template-columns:120px 25px 1fr;gap:18px;align-items:start;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.06)}.timeline time{font-size:7px;letter-spacing:2px;color:rgba(255,255,255,.3);padding-top:7px}.timeline article>span{color:rgba(230,225,255,.7);text-shadow:0 0 10px #fff}.timeline h3{font:400 25px/1 "Cormorant Garamond";margin-bottom:7px}.timeline p{font:300 13px/1.5 "Inter";color:rgba(255,255,255,.38)}.ending{margin-top:32px;font:italic 18px "Cormorant Garamond";color:rgba(255,255,255,.38)}
+
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;text-align:left}.letter-card{position:relative;min-height:140px;padding:24px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);color:#fff;text-align:left;cursor:pointer;transition:.3s}.letter-card:hover{transform:translateY(-4px);border-color:rgba(210,200,255,.22);background:rgba(255,255,255,.045)}.card-number{position:absolute;right:20px;top:18px;font-size:7px;letter-spacing:2px;color:rgba(255,255,255,.22)}.card-star{display:block;font-size:16px;margin-bottom:18px;color:rgba(230,225,255,.72);text-shadow:0 0 8px #fff}.card-title{display:block;font:400 23px/1.05 "Cormorant Garamond";color:rgba(255,255,255,.86);margin-bottom:8px}.card-hint{font-size:7px;letter-spacing:1.2px;color:rgba(255,255,255,.28)}
+.locked-card{opacity:.42;cursor:default}.locked-card:hover{transform:none;background:rgba(255,255,255,.025);border-color:rgba(255,255,255,.08)}
+
+.modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(1,3,10,.78);backdrop-filter:blur(10px);opacity:0;visibility:hidden;pointer-events:none;transition:.3s}.modal.active{opacity:1;visibility:visible;pointer-events:auto}.modal-box{position:relative;width:min(570px,100%);max-height:82vh;overflow-y:auto;padding:48px 48px 52px;text-align:center;background:radial-gradient(ellipse at top,rgba(110,90,170,.13),transparent 65%),#080c1c;border:1px solid rgba(255,255,255,.11);box-shadow:0 25px 80px rgba(0,0,0,.5)}.modal-box h3{font:400 32px/1.1 "Cormorant Garamond";margin:12px 0 27px}.modal-close{position:absolute;top:15px;right:18px;border:0;background:none}.big-star{font-size:22px;color:rgba(230,225,255,.82);text-shadow:0 0 8px #fff,0 0 18px rgba(180,160,255,.5);margin:14px 0}.modal-box p:not(.eyebrow){font:400 19px/1.65 "Cormorant Garamond";text-align:left;color:rgba(255,255,255,.65);margin-bottom:16px}
+
+.audio-card{width:min(520px,100%);padding:45px 35px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)}audio{width:100%;margin-top:12px}.hint{font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.27);margin-top:16px}
+.main-btn,.ghost-btn{display:inline-block;padding:13px 21px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.035);color:rgba(255,255,255,.75);text-decoration:none;font-size:8px;letter-spacing:2px;cursor:pointer;transition:.25s}.main-btn:hover,.ghost-btn:hover{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.3)}
+.answers{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:min(600px,100%);margin:10px auto 20px}.answer{padding:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.025);color:rgba(255,255,255,.65);cursor:pointer;font:400 17px "Cormorant Garamond"}.answer:hover{border-color:rgba(255,255,255,.25)}.answer.correct{border-color:rgba(190,210,190,.5)}.answer.wrong{border-color:rgba(210,180,180,.4)}.game-result{min-height:24px;font:italic 17px "Cormorant Garamond";color:rgba(255,255,255,.45);margin-bottom:18px}.secret-star{font-size:34px;text-shadow:0 0 10px #fff,0 0 30px rgba(180,160,255,.6);margin-bottom:15px}.secret-text{font:italic 20px/1.7 "Cormorant Garamond";color:rgba(255,255,255,.55)}.locked-page .secret-star{opacity:.4}
+
+@media(max-width:600px){
+ h1{font-size:38px;letter-spacing:4px}.hero .eyebrow{font-size:7px}.date{font-size:16px}.subtitle{font-size:18px}
+ .interactive-star{width:30px;height:30px}.interactive-star>span{font-size:20px}.interactive-star small{font-size:5.5px}
+ .star-memory{top:20%;left:12%}.star-voice{top:24%;right:11%}.star-letters{top:66%;left:14%}.star-game{bottom:23%}.star-gift{top:59%;right:13%}.star-openwhen{top:43%;left:6%}.star-secret{bottom:17%;right:7%}.star-future{top:17%;right:38%}
+ .page-inner{width:88%;padding-top:65px}.page-inner h2{font-size:44px}.intro{font-size:16px;margin-bottom:30px}
+ .card-grid{grid-template-columns:1fr;gap:10px}.letter-card{min-height:125px;padding:21px}.card-title{font-size:22px}
+ .timeline article{grid-template-columns:85px 18px 1fr;gap:10px}.timeline h3{font-size:22px}.timeline p{font-size:11px}
+ .modal-box{padding:45px 25px 40px}.modal-box h3{font-size:29px}.modal-box p:not(.eyebrow){font-size:18px}
+ .answers{grid-template-columns:1fr}.close{right:17px;top:17px}
+}
+/* Romantic multilingual heart */
+.love-section {
+  width: 100%;
+  padding: 35px 12px 55px;
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+}
+
+.love-title {
+  color: #ffd4ed;
+  font-size: clamp(20px, 4vw, 30px);
+  margin-bottom: 8px;
+}
+
+.love-subtitle {
+  color: #c9a6d8;
+  margin-bottom: 15px;
+}
+
+.heart-stage {
+  width: 100%;
+  max-width: 570px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.love-heart {
+  position: relative;
+  width: min(100%, 500px);
+  aspect-ratio: 1 / 0.95;
+  margin: 0 auto;
+  isolation: isolate;
+}
+
+.heart-words {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  clip-path: polygon(
+    50% 95%,
+    42% 86%,
+    28% 73%,
+    14% 59%,
+    5% 44%,
+    3% 31%,
+    7% 19%,
+    17% 11%,
+    28% 10%,
+    39% 16%,
+    50% 27%,
+    61% 16%,
+    72% 10%,
+    83% 11%,
+    93% 19%,
+    97% 31%,
+    95% 44%,
+    86% 59%,
+    72% 73%,
+    58% 86%
+  );
+}
+
+.heart-word {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #ff8dd8;
+  font-size: clamp(9px, 1.8vw, 14px);
+  font-weight: 600;
+  line-height: 1.2;
+  text-shadow: 0 0 8px #f24ebc70;
+  opacity: 0;
+  animation: heartWordAppear 0.6s ease forwards;
+}
+
+.heart-word:nth-child(3n) {
+  color: #ffe1f4;
+}
+
+.heart-word:nth-child(3n + 1) {
+  color: #dba6ff;
+}
+
+.heart-center {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 49%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  color: #ffb5e4;
+  font-family: cursive;
+  font-size: clamp(27px, 7vw, 49px);
+  font-weight: bold;
+  text-shadow: 0 0 12px #ff4fc9, 0 0 28px #ff4fc9;
+  pointer-events: none;
+}
+
+.heart-center span {
+  display: block;
+  color: #ff6ccf;
+  font-family: sans-serif;
+  font-size: 30px;
+  margin-top: 3px;
+}
+
+.love-heart.beating {
+  animation: heartPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes heartWordAppear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.025); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.04); }
+  60% { transform: scale(1); }
+}
+
+@media (max-width: 480px) {
+  .heart-stage {
+    width: 100%;
+  }
+
+  .heart-word {
+    font-size: 8px;
+  }
+}
+/* BIGGER LOVE HEART */
+.love-section {
+  width: 100%;
+  max-width: 100%;
+  padding: 40px 10px 70px;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.heart-stage {
+  width: 100%;
+  max-width: 900px;
+  height: min(78vw, 760px);
+  min-height: 520px;
+  margin: 25px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.love-heart {
+  width: min(94vw, 820px);
+  max-width: 820px;
+  aspect-ratio: 1 / 0.95;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  transform-origin: center;
+}
+
+.heart-words {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.heart-word {
+  font-size: clamp(12px, 1.7vw, 17px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.heart-center {
+  font-size: clamp(34px, 6vw, 64px);
+}
+
+.heart-center span {
+  font-size: clamp(30px, 4vw, 42px);
+}
+
+@media (max-width: 600px) {
+  .heart-stage {
+    min-height: 390px;
+    height: 110vw;
+  }
+
+  .love-heart {
+    width: 96vw;
+  }
+
+  .heart-word {
+    font-size: 10px;
+  }
+}
+/* Fix words cut off at the sides */
+.heart-stage {
+  width: 100%;
+  max-width: 1000px;
+  height: min(90vw, 820px);
+  min-height: 560px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.love-heart {
+  width: 100%;
+  max-width: 850px;
+  flex-shrink: 0;
+}
+
+.heart-words {
+  inset: 3%;
+  overflow: visible;
+}
+
+.heart-word {
+  font-size: clamp(10px, 1.35vw, 15px);
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .heart-stage {
+    min-height: 420px;
+    height: 115vw;
+    padding: 0 5px;
+  }
+
+  .love-heart {
+    width: 100%;
+  }
+
+  .heart-word {
+    font-size: 8px;
+  }
+}
+/* Separate romantic heart page */
+#heart-page {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow-y: auto;
+  background:
+    radial-gradient(ellipse at 50% 42%, #48204f 0%, #21132f 48%, #0b0814 100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#heart-page.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.heart-page-content {
+  min-height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 55px 14px 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.heart-page-eyebrow {
+  color: #f3a9dc;
+  letter-spacing: 4px;
+  font-size: 11px;
+}
+
+.heart-page-title {
+  color: #ffe2f3;
+  font-size: clamp(28px, 5vw, 46px);
+  line-height: 1.2;
+  margin: 12px 0;
+}
+
+.heart-page-title em {
+  color: #f4a8dc;
+}
+
+#heart-page .heart-stage {
+  width: 100%;
+  max-width: 850px;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 1 / 0.95;
+  margin: 5px auto;
+  padding: 0;
+}
+
+#heart-page .love-heart {
+  width: min(100%, 800px);
+  max-width: 800px;
+}
+
+.heart-page-message {
+  color: #eac5e4;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+#heart-page .close {
+  position: fixed;
+  top: 20px;
+  right: 22px;
+  z-index: 1001;
+}
+
+@media (max-width: 600px) {
+  .heart-page-content {
+    padding: 65px 8px 25px;
+  }
+
+  #heart-page .heart-stage {
+    width: 100%;
+  }
+
+  #heart-page .love-heart {
+    width: 100%;
+  }
+
+  #heart-page .heart-word {
+    font-size: 8px;
+  }
+}
+/* Cleaner heart words */
+#heart-page .heart-stage {
+  width: min(94vw, 780px);
+  max-width: 780px;
+  aspect-ratio: 1 / 0.95;
+  margin: 10px auto;
+  overflow: visible;
+}
+
+#heart-page .love-heart {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+#heart-page .heart-words {
+  position: absolute;
+  inset: 0;
+}
+
+#heart-page .heart-word {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-size: clamp(9px, 1.25vw, 15px);
+  line-height: 1.2;
+  color: #ffd5ef;
+  text-shadow: 0 0 8px #ff62c8;
+  animation: heartWordAppear 0.7s ease both;
+}
+
+@keyframes heartWordAppear {
+  from {
+    opacity: 0;
+    scale: 0.5;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+#heart-page .love-heart.beating {
+  animation: none;
+}
+#heart-page .heart-stage {
+  width: min(94vw, 760px);
+  margin-inline: auto;
+  overflow: visible;
+}
+
+#heart-page .heart-words {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+#heart-page .heart-word {
+  font-size: clamp(8px, 0.9vw, 11px);
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 600px) {
+  #heart-page .heart-word {
+    font-size: 7px;
+  }
+}
+/* التنسيقات المضافة لحركات الأسئلة الرومانسية والمؤقت */
+.hidden-ending {
+  animation: fadeInStyle 1.5s ease forwards;
+}
+
+@keyframes fadeInStyle {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 25px #fff; }
+}
+
+#romanticAnswers .answer {
+  width: 100%;
+  max-width: 400px;
+  margin: 8px auto;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+#romanticAnswers .answer:hover {
+  background-color: rgba(180, 160, 255, 0.15);
+  border-color: hsl(75, 94%, 57%);
+  color: #fff;
+}
+/* تنسيقات هندسية مطلقة لضمان وضوح رسمة القلب */
+/* 📐 تكبير مساحة حاوية الرسم البرمجية لتستوعب امتداد الكلمات الجديد */
+.heart-wrapper {
+  position: relative;
+  width: min(650px, 95vw);  /* تم تكبير العرض أفقياً */
+  height: min(600px, 85vh); /* تم تكبير الارتفاع عمودياً */
+  margin: 20px auto;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+.heart-wrapper.beating {
+  animation: heartBeat 1.4s infinite ease-in-out;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(255, 75, 110, 0.4)); }
+  45% { transform: scale(1.06); filter: drop-shadow(0 0 30px rgba(255, 75, 110, 0.75)); }
+  70% { transform: scale(1.02); filter: drop-shadow(0 0 18px rgba(255, 75, 110, 0.5)); }
+}
+
+.heart-words-container {
+  position: absolute;
+  inset: 0;
+}
+
+.heart-word {
+  position: absolute;
+  /* 🚀 السطر الأهم: يضمن أن نقطة ارتكاز الكلمة هي منتصفها تماماً لتطابق الرسمة الهندسية للقلب */
+  transform: translate(-50%, -50%) scale(0); 
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(10px, 2.3vw, 14px);
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 75, 110, 0.7);
+  white-space: nowrap;
+  pointer-events: none;
+  animation: popInWord 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popInWord {
+  /* الحفاظ على التوسط الأفقي والعمودي للكلمة أثناء ظهورها الحركي */
+  to { transform: translate(-50%, -50%) scale(1); }
+}
+
+body.heart-page-open {
+  overflow: hidden;
+}

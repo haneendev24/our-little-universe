@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Little Universe</title>
+    <link rel="preconnect" href="https://googleapis.com" />
+    <link rel="preconnect" href="https://gstatic.com" crossorigin />
+    <link
+      href="https://googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="universe">
+      <div id="stars"></div>
+
+      <button
+        class="interactive-star star-memory"
+        data-page="memories"
+        aria-label="Memories"
+      >
+        <span>✦</span><small>MEMORIES</small>
+      </button>
+      <button
+        class="interactive-star star-voice"
+        data-page="voice"
+        aria-label="Voice"
+      >
+        <span>✦</span><small>VOICE</small>
+      </button>
+      <button
+        class="interactive-star star-letters"
+        data-page="letters"
+        aria-label="Letters"
+      >
+        <span>✦</span><small>LETTERS</small>
+      </button>
+      <button
+        class="interactive-star star-game"
+        data-page="game"
+        aria-label="Game"
+      >
+        <span>✦</span><small>GAME</small>
+      </button>
+      <button
+        class="interactive-star star-gift"
+        data-page="gift"
+        aria-label="Gift"
+      >
+        <span>✦</span><small>GIFT</small>
+      </button>
+      <button
+        class="interactive-star star-openwhen"
+        data-page="ifwewere"
+        aria-label="If We Were"
+      >
+        <span>✦</span><small>IF WE WERE</small>
+      </button>
+      <button
+        class="interactive-star star-secret"
+        data-page="secret"
+        aria-label="Secret"
+      >
+        <span>✦</span><small>SECRET</small>
+      </button>
+      <button
+        class="interactive-star star-future locked"
+        id="futureStar"
+        data-page="future"
+        aria-label="Future"
+      >
+        <span>✦</span><small id="countdownDisplay">LOADING...</small><b>⌕</b>
+      </button>
+
+      <section class="hero">
+        <p class="eyebrow">A LITTLE PLACE FOR US</p>
+        <h1>OUR LITTLE UNIVERSE</h1>
+        <div class="date"><span>24.10.2024</span><i>→</i><span>∞</span></div>
+        <p class="subtitle">Different places. Same sky.</p>
+      </section>
+
+      <div class="scroll-hint">
+        <span>explore</span>
+        <div></div>
+      </div>
+    </main>
+
+    <section class="page" id="memories">
+      <button class="close" aria-label="Close">×</button>
+      <div class="page-inner">
+        <p class="eyebrow">A LITTLE ARCHIVE</p>
+        <h2>Our <em>Memories</em></h2>
+        <p class="intro">Little moments, big meaning.</p>
+        <div class="timeline">
+          <article>
+            <time>24.10.2024</time><span>✦</span>
+            <div>
+              <h3>The day we met</h3>
+              <p>This is where our little universe began.</p>
+            </div>
+          </article>
+          <article>
+            <time>5.11.2024</time><span>✦</span>
+            <div>
+              <h3>The first memories</h3>
+              <p>Some moments become special without us realizing it.</p>
+            </div>
+          </article>
+          <article>
+            <time>17.12.2024</time><span>✦</span>
+            <div>
+              <h3>A moment worth keeping</h3>
+              <p>One of those little moments that stayed with us.</p>
+            </div>
+          </article>
+        </div>
+        <p class="ending">And somehow, we're still writing it.</p>
+      </div>
+    </section>
+
+    <section class="page" id="voice">
+      <button class="close" aria-label="Close">×</button>
+      <div class="page-inner centered">
+        <p class="eyebrow">PRESS PLAY</p>
+        <h2>A voice <em>for you.</em></h2>
+        <p class="intro">i hope you gonna enjoy it.</p>
+        <div class="audio-card">
+          <div class="big-star">✦</div>
+          <audio controls>
+            <source src="voice-note.mp3" type="audio/mpeg" />
+            Your browser does not support audio.
+          </audio>
+          <p class="hint">love you honey.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="letters">
+      <button class="close" aria-label="Close">×</button>
+      <div class="page-inner">
+        <p class="eyebrow">A LITTLE SOMETHING</p>
+        <h2>Letters<br /><em>for you.</em></h2>
+        <p class="intro">For the moments when you need a few words from me.</p>
+        <div class="card-grid" id="lettersGrid"></div>
+      </div>
+    </section>
+
+    <section class="page" id="game">
+      <button class="close" aria-label="Close">×</button>
+      <div class="page-inner centered">
+        <p class="eyebrow">A LITTLE GAME</p>
+        <h2>How well do you<br /><em>know us?</em></h2>
+        <p class="intro" id="gameQuestion"></p>
+        <div class="answers" id="gameAnswers"></div>
+        <p class="game-result" id="gameResult"></p>
+        <button class="ghost-btn" id="nextQuestion">NEXT ✦</button>
+      </div>
+    </section>
+
+    <section class="page" id="gift">
+      <button class="close" aria-label="Close">×</button>
+      <div class="page-inner centered">
+        <p class="eyebrow">A LITTLE SURPRISE</p>
+        <h2>A gift,<br /><em>for you.</em></h2>
+
+        <a class="main-btn" href="#" id="giftButton">OPEN YOUR GIFT ✦</a>
+      </div>
+    </section>
+
+    <section class="page" id="ifwewere">
+      <button class="close" aria-label="Close">×</button>
+      <div class="page-inner centered">
+        <p class="eyebrow">OUR IMAGINARY WORLD</p>
+        <h2>If We <em>Were...</em></h2>
+        <div class="quiz-container" id="romanticQuizBox">
+          <p
+            class="intro"
+            id="romanticQuestion"
+            style="font-size: 22px; font-style: italic; color: #e1dbff"
+          ></p>
+          <div class="answers" id="romanticAnswers"></div>
+        </div>
+        <div id="romanticEnding" class="hidden-ending" style="display: none">
+          <div class="big-star" style="font-size: 40px; margin-bottom: 20px">
+            ✦
+          </div>
+          <h3
+            style="
+              font-family: &quot;Cormorant Garamond&quot;, serif;
+              font-size: 32px;
+              color: #fff;
+              margin-bottom: 15px;
+            "
+          >
+            And No Matter What We Were...
+          </h3>
+          <p
+            style="
+              font-family: &quot;Cormorant Garamond&quot;, serif;
+              font-size: 20px;
+              line-height: 1.7;
+              color: rgba(255, 255, 255, 0.75);
+              max-width: 550px;
+              margin: 0 auto;
+            "
+          >
+            "If we were stars, we would belong to the exact same constellation.
+            If we were waves, we would crash on the very same shore. No matter
+            the universe, the shape, or the form, my soul would find yours, just
+            like it did on 24.10.2024. You are my forever sky."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="secret">
+      <button class="close" aria-label="Close">×</button>
+      <div class="page-inner centered">
+        <p class="eyebrow">YOU FOUND IT</p>
+        <div class="secret-star">✦</div>
+        <h2>One little<br /><em>secret.</em></h2>
+        <p class="secret-text">
+          If you found this, you were looking closely.<br /><br />Maybe that's
+          exactly what I love about you.
+        </p>
+      </div>
+    </section>
+
+    <section class="page locked-page" id="future">
+      <button class="close" aria-label="Close">×</button>
+      <div class="page-inner centered" id="futurePageInner">
+        <div id="futureLockedContent">
+          <p class="eyebrow">NOT YET</p>
+          <div class="secret-star">✦</div>
+          <h2>Come back on<br /><em>24.10.2026</em></h2>
+          <p class="intro">Some things are worth waiting for.</p>
+        </div>
+        <div id="futureUnlockedContent" style="display: none">
+          <div
+            class="big-star"
+            style="
+              font-size: 55px;
+              text-shadow: 0 0 20px #fff;
+              animation: pulse 2s infinite;
+            "
+          >
+            ✦
+          </div>
+          <h1
+            class="giant-reveal"
+            style="
+              font-family: &quot;Cormorant Garamond&quot;, serif;
+              font-size: clamp(36px, 7vw, 82px);
+              letter-spacing: 4px;
+              color: #fff;
+              text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            "
+          >
+            I WILL ALWAYS CHOOSE YOU
+          </h1>
+          <p
+            class="eyebrow"
+            style="margin-top: 25px; color: hsl(75, 94%, 57%); font-size: 10px"
+          >
+            Through every timeline. Beyond infinity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal" id="modal">
+      <div class="modal-box">
+        <button class="modal-close" aria-label="Close">×</button>
+        <p class="eyebrow">A LETTER FOR YOU</p>
+        <div class="big-star">✦</div>
+        <h3 id="modalTitle"></h3>
+        <div id="modalText"></div>
+      </div>
+    </div>
+    <section class="page" id="heart-page">
+      <button class="close" id="closeHeartPage" aria-label="Close">×</button>
+      <div class="page-inner centered">
+        <p class="eyebrow">OUR INFINITE LANGUAGES</p>
+
+        <!-- الحاوية الرئيسية التي ستقوم الجافا سكريبت برسم كلمات الحب داخلها على شكل قلب -->
+        <div id="love-heart" class="heart-wrapper">
+          <div id="stars-container"></div>
+          <div id="heartWords" class="heart-words-container"></div>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+    <script src="gift.js"></script>
+  </body>
+</html>
